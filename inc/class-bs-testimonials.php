@@ -111,7 +111,7 @@ class BS_Testimonials {
                             <blockquote class='col-sm-9'>
                                 <p>$testimonial->post_content</p>
                                 <small>                                        
-                                    " . $link_open . $testimonial->post_title . $link_close . $byline "
+                                    " . $link_open . $testimonial->post_title . $link_close . $byline . "
                                 </small>
                             </blockquote>
                         </div>";          
@@ -122,7 +122,7 @@ class BS_Testimonials {
                             <blockquote class='text-center'>
                                 <p>$testimonial->post_content</p>
                                 <small>                                        
-                                    " . $link_open . $testimonial->post_title . $link_close . $byline "
+                                    " . $link_open . $testimonial->post_title . $link_close . $byline . "
                                 </small>
                             </blockquote>
                             <figure>
