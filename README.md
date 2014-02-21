@@ -36,17 +36,14 @@ Optional shortcode parameters:
 Template tag:
 =============
 
+```
 <?php
-
 	if ( class_exists( 'BS_Testimonials' ) ) {
-
         $BS_Testimonials = new BS_Testimonials();
-
         echo $BS_Testimonials->output();
-
     };
-
 ?>
+```
 
 Optional template tag parameters:
 --
@@ -54,23 +51,15 @@ Optional template tag parameters:
 The template tag accepts an array of the same parameters used in the shortcode.
 
 eg:
-
+```
 <?php if ( class_exists( 'BS_Testimonials' ) ) {
-
-    $BS_Testimonials = new BS_Testimonials();
-
-    echo $BS_Testimonials->output(array(                                        
-
+    	$BS_Testimonials = new BS_Testimonials();
+    	echo $BS_Testimonials->output(array(                                        
                         'size' => 150,
-
                         'responsive' => false,
-
                         'columns' => 3,
-
                         'limit' => 6
-
                         )
-
                     );                 
-    
 } ?>
+```
