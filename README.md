@@ -1,18 +1,20 @@
-=== Bootstrap Testimonials ===
-
-Contributors: lsdev, iaincoughtrie
-Donate link: http://lsdev.biz
-Tags: testimonials, widget, shortcode, template-tag, feedback, customers
-Tested up to: 3.8.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Bootstrap Testimonials
+======================
+* Contributors: lsdev, iaincoughtrie
+* Donate link: http://lsdev.biz
+* Tags: testimonials, widget, shortcode, template-tag, feedback, customers
+* Tested up to: 3.8.0
+* License: GPLv2 or later
+* License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Creates a testimonials post type, and allows you to display testimonials on your site using a shortcode, template tag or widget. Use either Gravatar or featured images. Designed to be used within the Bootstrap framework.
 
-== Usage ==
+Usage
+=====
 
 Shortcode:
-----------
+==========
+
 Insert the shortcode [testimonials] into any post or page to display all testimonials.
 
 Optional shortcode parameters:
@@ -35,8 +37,7 @@ Optional shortcode parameters:
 
 
 Template tag:
--------------
-Echo the template tag bst_testimonials('') within any page template to display all testimonials as follows:
+=============
 
 <?php 
 	if ( class_exists( 'BS_Testimonials' ) ) {
