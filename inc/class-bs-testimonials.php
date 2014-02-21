@@ -40,12 +40,12 @@ class BS_Testimonials {
             'include' => '',
             'size' => '150',
             'columns' => 1,
-            'responsive' => 'true'
+            'responsive' => true
         ), $atts ) );
         
         $output = "";
 
-        if ( $responsive == 'true' ) {
+        if ( $responsive == true ) {
             $responsive = 'img-responsive';    
         } else {
             $responsive = '';
@@ -72,7 +72,7 @@ class BS_Testimonials {
         if ( !empty( $testimonials ) ) {            
             $count = 0;
             if ( $columns >= 2 && $columns <= 4 )
-                $output .= "<div class='row'>";
+                $output .= "<div class='row bs-testimonials'>";
 
             foreach ( $testimonials as $testimonial ) {
                 // Count
@@ -106,12 +106,12 @@ class BS_Testimonials {
                     $output .= "
                         <div class='row'>                    
                             <figure class='col-sm-3'>
-                                " . $image . "
+                                $image
                             </figure>
                             <blockquote class='col-sm-9'>
-                                <p>" . $testimonial->post_content . "</p>
+                                <p>$testimonial->post_content</p>
                                 <small>                                        
-                                    " . $link_open . $testimonial->post_title . $link_close . $byline . "
+                                    " . $link_open . $testimonial->post_title . $link_close . $byline "
                                 </small>
                             </blockquote>
                         </div>";          
@@ -120,13 +120,13 @@ class BS_Testimonials {
                     $output .= "
                         <div class='col-md-" . $md_col_width . " col-sm-6'>
                             <blockquote class='text-center'>
-                                <p>" . $testimonial->post_content . "</p>
+                                <p>$testimonial->post_content</p>
                                 <small>                                        
-                                    " . $link_open . $testimonial->post_title . $link_close . $byline . "
+                                    " . $link_open . $testimonial->post_title . $link_close . $byline "
                                 </small>
                             </blockquote>
                             <figure>
-                                " . $image . "
+                                $image
                             </figure>
                         </div>";
                     if ( $count == $columns ) $output .= "<div class='clearfix'></div>";                  

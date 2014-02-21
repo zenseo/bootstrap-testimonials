@@ -5,13 +5,8 @@
  * Plugin URI: http://lsdev.biz
  * Description: Testimonials plugin for themes using the BootStrap Framework.
  * Author: Iain Coughtrie
- * Version: 0.8
+ * Version: 1.0
  * Author URI: http://lsdev.biz
- *
- * @package WordPress
- * @subpackage Bootstrap_Testimonials
- * @author Iain
- * @since 0.1
  */
 
 // Post Type and Custom Fields
