@@ -36,13 +36,13 @@ class BS_Testimonials {
     public function output( $atts ) {
 
         extract( shortcode_atts( array(
+            'columns' => 1,
+            'orderby' => 'name',
+            'order' => 'ASC',
             'limit' => '-1',
             'include' => '',
-            'size' => '150',
-            'columns' => 1,
-            'responsive' => true,
-            'orderby' => 'name',
-            'order' => 'ASC'
+            'size' => '150',            
+            'responsive' => true            
         ), $atts ) );
         
         $output = "";
