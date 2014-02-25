@@ -40,7 +40,9 @@ class BS_Testimonials {
             'include' => '',
             'size' => '150',
             'columns' => 1,
-            'responsive' => true
+            'responsive' => true,
+            'orderby' => 'name',
+            'order' => 'ASC'
         ), $atts ) );
         
         $output = "";
@@ -59,12 +61,16 @@ class BS_Testimonials {
             $args = array(
                 'post_type' => 'testimonial',
                 'posts_per_page' => $limit, 
-                'post__in' => $include
+                'post__in' => $include,
+                'orderby' => 'post__in',
+                'order' => $order
                 );
         } else {
              $args = array(
                 'post_type' => 'testimonial',
-                'posts_per_page' => $limit,           
+                'posts_per_page' => $limit,
+                'orderby' => $orderby,
+                'order' => $order       
                 );
         }
         $testimonials = get_posts( $args );

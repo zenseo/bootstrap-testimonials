@@ -13,13 +13,15 @@ class BS_Testimonials_Widget extends WP_Widget {
     function widget( $args, $instance ) { 
         extract( $args );
         $title    = apply_filters( 'widget_title', $instance['title'] );
-        
+        $columns = $instance['columns'];
+        $orderby = $instance['orderby'];
+        $order = $instance['order'];
+        $limit = $instance['limit'];
+        $include = $instance['include'];        
         $size = $instance['size'];
         $responsive = $instance['responsive'];
-        $columns = $instance['columns'];
-        $limit = $instance['limit'];
-        $include = $instance['include'];   
-
+        
+        
         if ( $include != '' ) $limit = "-1";
         
         if ( $responsive == '1' )
@@ -33,12 +35,14 @@ class BS_Testimonials_Widget extends WP_Widget {
  
         if ( class_exists( 'BS_Testimonials' ) ) {
             $BS_Testimonials = new BS_Testimonials();
-            echo $BS_Testimonials->output(array(                                        
-                                'size' => $size,
-                                'responsive' => $responsive,
+            echo $BS_Testimonials->output(array(
                                 'columns' => $columns,
+                                'orderby' => $orderby,
+                                'order' => $order,
                                 'limit' => $limit,
-                                'include' => $include
+                                'include' => $include,                 
+                                'size' => $size,
+                                'responsive' => $responsive
                                 )
                             );                 
         }
@@ -49,10 +53,12 @@ class BS_Testimonials_Widget extends WP_Widget {
     function update($new_instance, $old_instance) {   
     $instance = $old_instance;
     $instance['title'] = strip_tags( $new_instance['title'] );
+    $instance['columns'] = strip_tags( $new_instance['columns'] );
+    $instance['orderby'] = strip_tags( $new_instance['orderby'] );
+    $instance['order'] = strip_tags( $new_instance['order'] );
     $instance['limit'] = strip_tags( $new_instance['limit'] );
     $instance['include'] = strip_tags( $new_instance['include'] );
     $instance['size'] = strip_tags( $new_instance['size'] );
-    $instance['columns'] = strip_tags( $new_instance['columns'] );
     $instance['responsive'] = strip_tags( $new_instance['responsive'] );
     return $instance;
     }
@@ -60,11 +66,22 @@ class BS_Testimonials_Widget extends WP_Widget {
     /** @see WP_Widget::form -- do not rename this */
     function form($instance) {  
     
-        $defaults = array( 'title' => 'Testimonials', 'size' => '150', 'columns' => '1', 'limit' => '', 'responsive' => 1, 'include' => '');
+        $defaults = array( 
+            'title' => 'Testimonials',
+            'columns' => '1', 
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'limit' => '',
+            'include' => '',
+            'size' => '150',                         
+            'responsive' => 1             
+            );
         $instance = wp_parse_args( (array) $instance, $defaults );   
 
         $title    = esc_attr($instance['title']);
         $columns  = esc_attr($instance['columns']);
+        $orderby  = esc_attr($instance['orderby']);
+        $order  = esc_attr($instance['order']);
         $limit  = esc_attr($instance['limit']);
         $include  = esc_attr($instance['include']);
         $size  = esc_attr($instance['size']);
@@ -86,7 +103,39 @@ class BS_Testimonials_Widget extends WP_Widget {
             }
             ?>
             </select>
-        </p>        
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('orderby'); ?>"><?php _e('Order By:'); ?></label>
+            <select name="<?php echo $this->get_field_name('orderby'); ?>" id="<?php echo $this->get_field_id('orderby'); ?>" class="widefat">
+            <?php
+            $options = array(
+                'None' => 'none', 
+                'ID' => 'ID',
+                'Name' => 'name', 
+                'Date' => 'date',
+                'Modified Date' => 'modified',
+                'Random' => 'rand' 
+                );
+            foreach ($options as $name=>$value) {
+                echo '<option value="' . $value . '" id="' . $value . '"', $orderby == $value ? ' selected="selected"' : '', '>', $name, '</option>';
+            }
+            ?>
+            </select>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e('Order:'); ?></label>
+            <select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
+            <?php
+            $options = array(
+                'Ascending' => 'ASC', 
+                'Descending' => 'DESC'
+                );
+            foreach ($options as $name=>$value) {
+                echo '<option value="' . $value . '" id="' . $value . '"', $order == $value ? ' selected="selected"' : '', '>', $name, '</option>';
+            }
+            ?>
+            </select>
+        </p>       
         <p class="limit">
             <label for="<?php echo $this->get_field_id('limit'); ?>"><?php _e('Maximum amount:'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="text" value="<?php echo $limit; ?>" />
@@ -95,7 +144,7 @@ class BS_Testimonials_Widget extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id('include'); ?>"><?php _e('Specify Testimonials by ID:'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('include'); ?>" name="<?php echo $this->get_field_name('include'); ?>" type="text" value="<?php echo $include; ?>" />
-            <small><?php _e('Comma separated list, overrides limit setting'); ?></small>
+            <small><?php _e('Comma separated list, overrides limit and order settings'); ?></small>
         </p>
         <p>
             <label for="<?php echo $this->get_field_id('size'); ?>"><?php _e('Image size:'); ?></label> 

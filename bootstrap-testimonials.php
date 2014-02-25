@@ -5,7 +5,7 @@
  * Plugin URI: http://lsdev.biz
  * Description: Testimonials plugin for themes using the BootStrap Framework.
  * Author: Iain Coughtrie
- * Version: 1.0
+ * Version: 1.1
  * Author URI: http://lsdev.biz
  */
 
