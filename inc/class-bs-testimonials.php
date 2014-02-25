@@ -110,7 +110,7 @@ class BS_Testimonials {
                 
                 if ( $columns == 1 ) { 
                     $output .= "
-                        <div class='row'>                    
+                        <div class='row bs-testimonials'>                    
                             <figure class='col-sm-3'>
                                 $image
                             </figure>
