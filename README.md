@@ -32,8 +32,8 @@ Optional shortcode parameters:
 --
 
 - columns
- - set the number of columns to displays
- - options: 1,2,3,4
+ - set the number of columns to display
+ - options: 1, 2, 3, 4
  - default: 1
  - eg: `[testimonials columns=4]`
 
@@ -44,13 +44,13 @@ Optional shortcode parameters:
  - eg: `[testimonials orderby=rand]`
 
 - order
- - whether to display testimonials in ascending or descending order
+ - whether to display testimonials in ascending or descending order (based on the orderby parameter)
  - options: ASC, DESC
  - default: ASC
  - eg: `[testimonials order='DESC']`
 
 - limit
- - set the maximum number of testimonials returned
+ - set the maximum number of testimonials to be returned
  - eg: `[testimonials limit=4]`
 
 - include
@@ -58,7 +58,7 @@ Optional shortcode parameters:
  - eg: `[testimonials include='7, 38, 19']`
 
 - size
- - set the featured image or Gravatar size to display on each testimonial. Accepts numbers only, exclude the px!
+ - set the featured image or Gravatar size to display on each testimonial. Accepts numbers only, exclude the 'px'.
  - default: 150
  - eg: `[testimonials size=200]`
 
