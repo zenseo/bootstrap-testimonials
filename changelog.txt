@@ -5,3 +5,4 @@ FEB 21 2014 - Version 1.0
 FEB 25 2014 - Version 1.1
 -------------------------
 - Added order and orderby parameters for shortcode and widget
+- General code cleanup
