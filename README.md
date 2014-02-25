@@ -9,13 +9,12 @@ Bootstrap Testimonials
 
 Creates a testimonials post type, and allows you to display testimonials on your site using a shortcode, template tag or widget. Use either Gravatar or featured image for each testimonial. Designed to be used with the Bootstrap framework.
 
-Post Type and Fields:
-=====================
+## Post Type and Fields:
 
 On activation, the Bootstrap Testimonials plugin creates a Testimonials post type on your site. 
 
-Testimonials Post Type fields
---
+### Testimonials Post Type fields
+
 - Post Title: Client's name
 - Post Body: Client's testimonial
 - Featured Image: Client's photograph or image
@@ -23,13 +22,11 @@ Testimonials Post Type fields
 - Byline: Client's byline, generally used to display their position in the company.
 - URL: Link to client's website.
 
-Shortcode:
-==========
+## Shortcode:
 
 Insert the shortcode `[testimonials]` into any page to display all testimonials.
 
-Optional shortcode parameters:
---
+### Optional shortcode parameters:
 
 - columns
  - set the number of columns to display
@@ -67,8 +64,8 @@ Optional shortcode parameters:
  - default: true
  - eg: `[testimonials responsive=false]`
 
-Function Call:
-=============
+## Function Call:
+
 The testimonials function can be called directly in your theme templates. It accepts an array of the same parameters used in the shortcode.
 
 eg:
