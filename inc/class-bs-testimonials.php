@@ -42,12 +42,12 @@ class BS_Testimonials {
             'limit' => '-1',
             'include' => '',
             'size' => '150',            
-            'responsive' => true            
+            'responsive' => 'true'            
         ), $atts ) );
         
         $output = "";
 
-        if ( $responsive == true ) {
+        if ( $responsive == 'true' || $responsive == true ) {
             $responsive = 'img-responsive';    
         } else {
             $responsive = '';
