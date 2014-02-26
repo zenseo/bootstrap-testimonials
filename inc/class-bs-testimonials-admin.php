@@ -4,8 +4,10 @@ class BS_Testimonials_Admin {
 
 	public function __construct()
 	{
-	    add_action( 'init', array( $this, 'post_type_setup' ) );
-	    add_action( 'init', array( $this, 'metabox_init' ) );
+		if ( ! class_exists('CMB_Meta_Box'))
+			require_once( plugin_dir_path( __FILE__ ) . '/Custom-Meta-Boxes/custom-meta-boxes.php' );
+
+	    add_action( 'init', array( $this, 'post_type_setup' ) );	    
 	    add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );    
 	}
 
@@ -54,37 +56,36 @@ class BS_Testimonials_Admin {
 
 	public function field_setup( $meta_boxes ) 
 	{
-	    $prefix = 'bs_'; // Prefix for all fields
-	    $meta_boxes[ 'testimonial_metabox' ] = array(
-	        'id' => 'testimonial_metabox',
-	        'title' => 'Testimonial Info',
-	        'pages' => array( 'testimonial' ), // post type
-	        'context' => 'normal',
-	        'priority' => 'high',
-	        'show_names' => true, // Show field names on the left
-	        'fields' => array(
-	            array(
-	                'name' => 'Gravatar Email Address',
-	                'desc' => 'Enter the email address of this client to use a gravatar image',
-	                'id' => $prefix . 'testimonial_email',
-	                'type' => 'text_email'
-	            ),
-	            array(
-	                'name' => 'Byline',
-	                'desc' => 'eg. CEO of ABC Enterprises',
-	                'id' => $prefix . 'testimonial_byline',
-	                'type' => 'text'
-	            ),
-	            array(
-	                'name' => 'URL',
-	                'desc' => "Link to this client's website",
-	                'id' => $prefix . 'testimonial_url',
-	                'type' => 'text_url'
-	            ),
+	    $prefix = 'bs_testimonial_'; // Prefix for all fields
+	    $fields = array(
+	        array(
+	            'name' => 'Gravatar Email Address',
+	            'desc' => 'Enter the email address of this client to use a gravatar image',
+	            'id' => $prefix . 'email',
+	            'type' => 'text'
+	        ),
+	        array(
+	            'name' => 'Byline',
+	            'desc' => 'eg. CEO of ABC Enterprises',
+	            'id' => $prefix . 'byline',
+	            'type' => 'text'
+	        ),
+	        array(
+	            'name' => 'URL',
+	            'desc' => "Link to this client's website",
+	            'id' => $prefix . 'url',
+	            'type' => 'text_url'
 	        ),
 	    );
 
-	    return $meta_boxes;
+
+	    $meta_boxes[] = array(
+			'title' => 'Testimonial Details',
+			'pages' => 'testimonial',
+			'fields' => $fields
+		);
+
+		return $meta_boxes;
 	}
 }
 
