@@ -104,8 +104,10 @@ class BS_Testimonials {
                         $image = get_the_post_thumbnail( $testimonial->ID, $size, "class=img-circle $responsive pull-right");
                     else
                         $image = get_the_post_thumbnail( $testimonial->ID, $size, "class=img-circle $responsive center-block");
-                } else {
+                } elseif ( '' != get_post_meta( $testimonial->ID, 'bs_testimonial_email', true ) ) {
                     $image = get_avatar( get_post_meta( $testimonial->ID, 'bs_testimonial_email', true ), $size );
+                } else {
+                    $image = "";
                 }
                 
                 if ( $columns == 1 ) { 
