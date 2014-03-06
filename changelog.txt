@@ -11,3 +11,7 @@ FEB 26 2014 - Version 1.02
 --------------------------
 - If no featured image is set and no Gravatar email is added, then no image will display (instead of the Gravatar mystery man). In a future update I will make this Gravatar placeholder optional.
 - Switched to Human Made version of Custom-Meta-Boxes class - https://github.com/humanmade/Custom-Meta-Boxes
+
+MAR 06 2014 - Version 1.03
+--------------------------
+- Paragraph formatting applied to testimonial content

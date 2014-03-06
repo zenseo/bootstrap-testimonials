@@ -98,6 +98,10 @@ class BS_Testimonials {
                 else
                     $byline = "";
                 
+
+                // Content
+                $content = wpautop($testimonial->post_content);
+                
                 // Image
                 if ( '' != get_the_post_thumbnail( $testimonial->ID ) ) {
                     if ( $columns == 1 ) 
@@ -117,7 +121,7 @@ class BS_Testimonials {
                                 $image
                             </figure>
                             <blockquote class='col-sm-9'>
-                                <p>$testimonial->post_content</p>
+                                $content
                                 <small>                                        
                                     " . $link_open . $testimonial->post_title . $link_close . $byline . "
                                 </small>
@@ -128,7 +132,7 @@ class BS_Testimonials {
                     $output .= "
                         <div class='col-md-" . $md_col_width . " col-sm-6'>
                             <blockquote class='text-center'>
-                                <p>$testimonial->post_content</p>
+                                $content
                                 <small>                                        
                                     " . $link_open . $testimonial->post_title . $link_close . $byline . "
                                 </small>
