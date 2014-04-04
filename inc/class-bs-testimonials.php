@@ -7,7 +7,7 @@ class BS_Testimonials {
     public function __construct()
     {
         add_action( 'template_redirect', array($this, 'disable_single' ) );
-        add_filter( 'get_avatar', array($this, 'change_avatar_class' ) );
+        // add_filter( 'get_avatar', array($this, 'change_avatar_class' ) );
         add_shortcode( 'testimonials', array($this, 'output' ) );        
     }
     
