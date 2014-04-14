@@ -35,6 +35,7 @@ class BS_Testimonials_Admin {
 		    'publicly_queryable' => true,
 		    'show_ui'            => true,
 		    'show_in_menu'       => true,
+		    'menu_icon'			 => 'dashicons-editor-quote',
 		    'query_var'          => true,
 		    'rewrite'            => array( 'slug' => 'testimonial' ),
 		    'capability_type'    => 'post',
