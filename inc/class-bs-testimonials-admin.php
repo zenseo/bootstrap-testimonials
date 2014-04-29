@@ -42,7 +42,7 @@ class BS_Testimonials_Admin {
 		    'has_archive'        => false,
 		    'hierarchical'       => false,
 		    'menu_position'      => null,
-		    'supports'           => array( 'title', 'editor', 'thumbnail' )
+		    'supports'           => array( 'title', 'editor', 'thumbnail', 'page-attributes', 'excerpt' )
 		);
 
 		register_post_type( 'testimonial', $args );

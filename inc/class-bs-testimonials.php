@@ -37,12 +37,13 @@ class BS_Testimonials {
 
         extract( shortcode_atts( array(
             'columns' => 1,
-            'orderby' => 'name',
+            'orderby' => 'menu_order',
             'order' => 'ASC',
             'limit' => '-1',
             'include' => '',
+            'display' => 'full',
             'size' => '150',            
-            'responsive' => 'true'            
+            'responsive' => 'true'
         ), $atts ) );
         
         $output = "";
@@ -100,7 +101,14 @@ class BS_Testimonials {
                 
 
                 // Content
-                $content = wpautop($testimonial->post_content);
+                if ( $display == 'full' ) {
+                    $content = wpautop($testimonial->post_content);
+                } elseif ( $display == 'excerpt' ) {
+                    if ( $testimonial->post_excerpt )
+                        $content = wpautop($testimonial->post_excerpt);
+                    else
+                        $content = wpautop($testimonial->post_content);
+                }
                 
                 // Image
                 if ( '' != get_the_post_thumbnail( $testimonial->ID ) ) {
